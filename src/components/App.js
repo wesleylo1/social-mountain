@@ -16,6 +16,7 @@ class App extends Component {
     }
 
     this.updatePost = this.updatePost.bind(this)
+    this.getPosts = this.getPosts.bind(this)
     this.deletePost = this.deletePost.bind(this)
     this.createPost = this.createPost.bind(this)
     this.searchPosts = this.searchPosts.bind(this)
@@ -23,6 +24,15 @@ class App extends Component {
 
   componentDidMount() {
     // fetch posts, setting the array returned onto posts on state
+    axios
+      .get("https://practiceapi.devmountain.com/api/posts")
+      .then((res) => {
+        this.setState({ posts: res.data })
+      })
+      .catch((err) => console.log(err))
+  }
+
+  getPosts() {
     axios
       .get("https://practiceapi.devmountain.com/api/posts")
       .then((res) => {
