@@ -67,12 +67,11 @@ class App extends Component {
   }
 
   searchPosts(text) {
-    // text = this.state.userInput
     axios
       .get(`https://practiceapi.devmountain.com/api/posts/filter?text=${text}`)
       .then((res) => {
         this.setState({ posts: res.data })
-        console.log(this.state.userInput)
+        this.setState({ userInput: "" })
       })
       .catch((err) => console.log(err))
   }
