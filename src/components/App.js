@@ -71,7 +71,6 @@ class App extends Component {
       .get(`https://practiceapi.devmountain.com/api/posts/filter?text=${text}`)
       .then((res) => {
         this.setState({ posts: res.data })
-        this.setState({ userInput: "" })
       })
       .catch((err) => console.log(err))
   }
